@@ -7,20 +7,22 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
+        PokemonManager manager = new PokemonManager();
+
         Pokemon pokemon = null;
+
         while(pokemon == null){
             System.out.print("Choose a pokemon: pikachu/charizard/squirtle: ");
             String pokemonChoice = scanner.nextLine().toLowerCase();
+            pokemon = PokemonFactory.choosePokemon(pokemonChoice);
 
-            switch (pokemonChoice){
-                case "pikachu" -> pokemon = new Pikachu();
-                case "charizard" -> pokemon = new Charizard();
-                case "squirtle" -> pokemon = new Squirtle();
-                default -> System.out.println("Invalid choice, try again");
+            if(pokemon != null){
+                System.out.println(pokemon + " I choose you");
+            }
+            else{
+                System.out.println("Invalid choice, try again");
             }
         }
-
-        PokemonManager manager = new PokemonManager();
 
         Trainer playerTrainer = new Trainer(pokemon, "Player");
 
