@@ -44,6 +44,7 @@ public class Main {
         trainer2.attack();
         trainer3.attack();
 
+        scanner.close();
     }
 
 }
